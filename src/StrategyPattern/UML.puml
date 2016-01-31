@@ -1,0 +1,80 @@
+@startuml
+
+abstract class Duck {
+    IFlyBehavior flyBehavior
+    IQuackBehavior quackBehavior
+
+    void display()
+    void performFly()
+    void performQuack()
+    void setFlyBehavior(IFlyBehavior)
+    void setQuackBehavior(IQuackBehavior)
+}
+Duck -> IFlyBehavior
+Duck -> IQuackBehavior
+
+Duck <|-- ModelDuck
+Duck <|-- MallardDuck
+
+class ModelDuck {
+    flyBehavior = new FlyNoWay()
+    quackBehavior = new Quack()
+
+    void display()
+    "I'm a model duck"
+}
+
+class MallardDuck {
+    flyBehavior = new FlyWithWings()
+    quackBehavior = new Quack()
+
+    void display()
+    "I'm a real Mallard duck"
+}
+
+interface IQuackBehavior {
+    void quack()
+}
+interface IFlyBehavior {
+    void fly()
+}
+
+IFlyBehavior <|.. FlyNoWay
+IFlyBehavior <|.. FlyWithWings
+IFlyBehavior <|.. FlyRocketPowered
+
+class FlyNoWay {
+    void fly()
+    "I can't fly"
+}
+
+class FlyWithWings{
+    void fly()
+    "I'm flying!!!"
+}
+
+class FlyRocketPowered {
+    void fly()
+    "I'm flying with a rocket!"
+}
+
+IQuackBehavior <|.. Quack
+IQuackBehavior <|.. Squeak
+IQuackBehavior <|.. MuteQuack
+
+class Quack {
+    void quack()
+    "Quack"
+}
+
+class Squeak{
+    void quack()
+    "Squeak"
+}
+
+class MuteQuack {
+    void quack()
+    "Silence"
+}
+
+@enduml

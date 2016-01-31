@@ -1,0 +1,45 @@
+@startuml
+
+interface ISubject {
+    registerObserver(IObserver);
+    removeObserver(IObserver);
+    notifyObserver();
+}
+interface IObserver {
+    update()
+}
+interface IDisplayElement {
+    display()
+}
+
+ISubject <|.. WeatherData
+ISubject -> IObserver
+IDisplayElement <|.. CurrentConditionsDisplay
+IDisplayElement <|.. FullConditionsDisplay
+IObserver <|.. CurrentConditionsDisplay
+IObserver <|.. FullConditionsDisplay
+
+class WeatherData {
+    ArrayList<IObserver>
+
+    registerObserver(IObserver);
+    removeObserver(IObserver);
+    notifyObserver();
+    measurementsChanged()
+    setMeasurements()
+}
+
+WeatherData <- CurrentConditionsDisplay
+WeatherData <- FullConditionsDisplay
+
+class CurrentConditionsDisplay {
+    update()
+    display()
+}
+
+class FullConditionsDisplay {
+    update()
+    display()
+}
+
+@enduml
