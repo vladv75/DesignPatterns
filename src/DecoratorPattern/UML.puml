@@ -1,0 +1,50 @@
+@startuml
+
+abstract class Beverage {
+    description
+
+    getDescription()
+    cost()
+}
+
+abstract class CondimentDecorator {
+    getDescription()
+}
+
+Beverage <|-- Espresso
+Beverage <|-- DarkRoast
+Beverage <|-- CondimentDecorator
+
+CondimentDecorator <|-- Milk
+CondimentDecorator <|-- Mocha
+CondimentDecorator <|-- Whip
+
+class Espresso {
+    description = "Espresso"
+    cost()
+}
+
+class DarkRoast {
+    description = "DarkRoast"
+    cost()
+}
+
+class Milk {
+    Beverage beverage;
+    getDescription();
+    cost();
+}
+
+class Mocha {
+    Beverage beverage;
+    getDescription();
+    cost();
+}
+
+class Whip {
+    Beverage beverage;
+    getDescription();
+    cost();
+}
+
+@enduml
