@@ -1,13 +1,13 @@
 package FactoryPattern;
 
 /**
- * RUSCheesePizza  v.1.0  06.02.16
+ * RUCheesePizza  v.1.0  06.02.16
  * Copyright (c) 2016 Vladislav Laptev,
  * All rights reserved. Used by permission,
  * e-mail: vlad@allfound.ru
  */
-public class RUSCheesePizza extends Pizza {
-    public RUSCheesePizza() {
+public class RUCheesePizza extends Pizza {
+    public RUCheesePizza() {
         name = "RU Cheese Pizza";
         dough = "Thin Crust Dough";
         sauce = "Marinara Sauce";

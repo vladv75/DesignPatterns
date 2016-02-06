@@ -10,7 +10,7 @@ public class RUPizzaStore extends PizzaStore {
     protected Pizza createPizza(String item) {
         switch (item) {
             case "cheese":
-                return new RUSCheesePizza();
+                return new RUCheesePizza();
             case "bigcheese":
                 return new RUBigCheesePizza();
             default:

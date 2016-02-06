@@ -1,0 +1,58 @@
+@startuml
+
+abstract class Pizza {
+    String name
+    String dough
+    String sauce
+    ArrayList toppings
+
+    void prepare()
+    void bake()
+    void cut()
+    void box()
+    public String getName()
+}
+
+class RUCheesePizza {
+    + RUCheesePizza()
+}
+
+class RUBigCheesePizza {
+    + RUBigCheesePizza()
+}
+
+class NYCheesePizza {
+    + NYCheesePizza()
+}
+
+class NYBigCheesePizza {
+    + NYBigCheesePizza()
+}
+
+Pizza <|-- RUCheesePizza
+Pizza <|-- RUBigCheesePizza
+Pizza <|-- NYCheesePizza
+Pizza <|-- NYBigCheesePizza
+
+abstract class PizzaStore {
+    +Pizza orderPizza(String type)
+    abstract Pizza createPizza(String type)
+}
+
+class RUPizzaStore {
+    Pizza createPizza(String item)
+}
+
+PizzaStore <|-- RUPizzaStore
+RUPizzaStore ..> RUCheesePizza
+RUPizzaStore ..> RUBigCheesePizza
+
+class NYPizzaStore {
+    Pizza createPizza(String item)
+}
+
+PizzaStore <|-- NYPizzaStore
+NYPizzaStore ..> NYCheesePizza
+NYPizzaStore ..> NYBigCheesePizza
+
+@enduml
