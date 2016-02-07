@@ -8,4 +8,5 @@ package CommandPattern.PultExample;
  */
 public interface Command {
     void execute();
+    void undo();
 }

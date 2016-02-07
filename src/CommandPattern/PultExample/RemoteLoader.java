@@ -33,11 +33,18 @@ public class RemoteLoader {
         //проверка нажатий кнопок пульта
         remoteControl.onButtonWasPressed(0);
         remoteControl.offButtonWasPressed(0);
+        remoteControl.undoButtonWasPressed();
+
         remoteControl.onButtonWasPressed(1);
         remoteControl.offButtonWasPressed(1);
+        remoteControl.undoButtonWasPressed();
+
         remoteControl.onButtonWasPressed(2);
         remoteControl.offButtonWasPressed(2);
+        remoteControl.undoButtonWasPressed();
+
         remoteControl.onButtonWasPressed(3);
         remoteControl.offButtonWasPressed(3);
+        remoteControl.undoButtonWasPressed();
     }
 }
