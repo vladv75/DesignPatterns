@@ -1,0 +1,65 @@
+@startuml
+
+interface Command {
+    + void execute()
+}
+
+class Light {
+    + void on()
+    + void off()
+}
+
+class GarageDoor {
+    + void on()
+    + void off()
+}
+
+class LightOnCommand {
+    Light light
+
+    + LightOnCommand(Light light)
+    + void execute()
+}
+
+class LightOffCommand {
+    Light light
+
+    + LightOffCommand(Light light)
+    + void execute()
+}
+
+class GaragrDoorOnCommand {
+    GarageDoor garageDoor
+
+    + GarageDoorOnCommand(GarageDoor garageDoor)
+    + void execute()
+}
+
+class GaragrDoorOffCommand {
+    GarageDoor garageDoor
+
+    + GarageDoorOffCommand(GarageDoor garageDoor)
+    + void execute()
+}
+
+class SimpleRemoteControl {
+    Command slot
+
+    + SimpleRemoteControl()
+    + void setCommand(Command command)
+    + void buttonWasPressed()
+}
+
+Command <.. SimpleRemoteControl
+
+Command <|.. LightOnCommand
+Light <.. LightOnCommand
+Command <|.. LightOffCommand
+Light <.. LightOffCommand
+
+Command <|.. GaragrDoorOnCommand
+GarageDoor <.. GaragrDoorOnCommand
+Command <|.. GaragrDoorOffCommand
+GarageDoor <.. GaragrDoorOffCommand
+
+@enduml

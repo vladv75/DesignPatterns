@@ -1,0 +1,75 @@
+@startuml
+
+interface Command {
+    + void execute()
+}
+
+class NoCommand {
+    + execute()
+}
+
+class Light {
+    - String nameObject;
+    + void Light(String nameObject)
+    + void on()
+    + void off()
+}
+
+class GarageDoor {
+    + void on()
+    + void off()
+}
+
+class LightOnCommand {
+    Light light
+
+    + LightOnCommand(Light light)
+    + void execute()
+}
+
+class LightOffCommand {
+    Light light
+
+    + LightOffCommand(Light light)
+    + void execute()
+}
+
+class GaragrDoorOnCommand {
+    GarageDoor garageDoor
+
+    + GarageDoorOnCommand(GarageDoor garageDoor)
+    + void execute()
+}
+
+class GaragrDoorOffCommand {
+    GarageDoor garageDoor
+
+    + GarageDoorOffCommand(GarageDoor garageDoor)
+    + void execute()
+}
+
+class RemoteControl {
+    Command[] onCommands;
+    Command[] offCommands;
+
+    + RemoteControl()
+    + setCommand(int slot, Command onCommand, Command offCommand)
+    + onButtonWasPressed(int slot)
+    + offButtonWasPressed(int slot)
+    + String toString()
+}
+
+Command <.. RemoteControl
+Command <|.. NoCommand
+
+Command <|.. LightOnCommand
+Light <.. LightOnCommand
+Command <|.. LightOffCommand
+Light <.. LightOffCommand
+
+Command <|.. GaragrDoorOnCommand
+GarageDoor <.. GaragrDoorOnCommand
+Command <|.. GaragrDoorOffCommand
+GarageDoor <.. GaragrDoorOffCommand
+
+@enduml
