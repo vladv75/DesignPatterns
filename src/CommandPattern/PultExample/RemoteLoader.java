@@ -46,5 +46,16 @@ public class RemoteLoader {
         remoteControl.onButtonWasPressed(3);
         remoteControl.offButtonWasPressed(3);
         remoteControl.undoButtonWasPressed();
+        //создаем макрокоманды
+        Command[] commandOn = {livingRoomLightOn, kitchenLightOn, garageDoorOnCommand, stereoOnWithCDCommand};
+        Command[] commandOff = {livingRoomLightOff, kitchenLightOff, garageDoorOffCommand, stereoOffCommand};
+        MacroCommand macroCommandOn = new MacroCommand(commandOn);
+        MacroCommand macroCommandOff = new MacroCommand(commandOff);
+        remoteControl.setCommand(4, macroCommandOn, macroCommandOff);
+        System.out.println(remoteControl);
+        System.out.println("!!! macroCommandOn is Press !!!");
+        remoteControl.onButtonWasPressed(4);
+        System.out.println("!!! macroCommandOff is Press !!!");
+        remoteControl.offButtonWasPressed(4);
     }
 }
